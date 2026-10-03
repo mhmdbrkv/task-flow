@@ -787,16 +787,6 @@ export default function App() {
     }
     return (
       <main className="auth-layout" dir="rtl">
-        <section className="auth-story">
-          <a className="brand" href="#" onClick={(event) => { event.preventDefault(); navigateToAuth(null); }}><BrandMark /><span className="brand-word">تاسك فلو</span></a>
-          <div className="auth-story-copy">
-            <span className="eyebrow">شغلكم كله في مكان واحد</span>
-            <h1>خلّي الشغل يمشي بسلاسة.</h1>
-            <p>رتّبوا مشاريعكم ومهامكم وخلي كل واحد عارف دوره — من غير دوشة.</p>
-          </div>
-          <div className="story-note"><span>✳</span><p>الشغل الحلو بيبدأ<br />لما كل واحد يبقى عارف<br />مسؤوليته.</p></div>
-          <span className="auth-footer">فريق متفاهم، وخطوة ورا خطوة.</span>
-        </section>
         <section className="auth-panel">
           <div className="auth-card">
             <span className="eyebrow">{authMode === 'login' ? 'منور تاني' : 'يلا نبدأ'}</span>
@@ -819,6 +809,16 @@ export default function App() {
             </p>
             <button className="auth-back text-button" onClick={() => navigateToAuth(null)}>← رجوع للصفحة الرئيسية</button>
           </div>
+        </section>
+        <section className="auth-story">
+          <a className="brand" href="#" onClick={(event) => { event.preventDefault(); navigateToAuth(null); }}><BrandMark /><span className="brand-word">تاسك فلو</span></a>
+          <div className="auth-story-copy">
+            <span className="eyebrow">شغلكم كله في مكان واحد</span>
+            <h1>خلّي الشغل<br />يمشي بسلاسة.</h1>
+            <p>رتّبوا مشاريعكم، وزّعوا المهام، وخلي كل واحد عارف دوره — من غير دوشة.</p>
+          </div>
+          <div className="story-note"><span>✳</span><p>الشغل الحلو بيبدأ<br />لما كل واحد يبقى عارف<br />مسؤوليته.</p></div>
+          <span className="auth-footer">فريق متفاهم، وخطوة ورا خطوة.</span>
         </section>
       </main>
     );
@@ -880,11 +880,17 @@ export default function App() {
             <SessionsView sessions={sessions} onRevoke={(session) => void revokeSession(session)} onSignOut={signOut} onSignOutEverywhere={() => void signOutEverywhere()} />
           ) : !project ? (
             <div className="empty-project">
-              <div className="empty-illustration">✳</div>
-              <span className="eyebrow">بداية جديدة</span>
-              <h1>مشروعك الأول لسه مستني فكرتك.</h1>
-              <p>اعملوا مساحة لفريقكم تخططوا فيها، وتشاركوا التحديثات، وتنجزوا سوا.</p>
-              <button className="button button-primary" onClick={() => setCreateProjectOpen(true)}>＋ اعمل مشروع</button>
+              <div className="empty-project-card">
+                <div className="empty-project-topbar">
+                  <span className="eyebrow">بداية جديدة</span>
+                  <span className="empty-illustration">✳</span>
+                </div>
+                <h1>مشروعك<br />الأول<br />لسه<br />مستني<br />فكرتك.</h1>
+                <p>اعملوا مساحة لفريقكم تخططوا فيها، وتشاركوا التحديثات، وتنجزوا سوا.</p>
+                <div className="empty-project-actions">
+                  <button className="button button-primary" onClick={() => setCreateProjectOpen(true)}>＋ اعمل مشروع</button>
+                </div>
+              </div>
             </div>
           ) : (
             <>
